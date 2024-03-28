@@ -8,12 +8,9 @@
       [ngClass]="isDarkMode ? 'bg-dark' : 'bg-light'"
       type="text"
       placeholder="Search GitHub username…"
+      [(ngModel)]="userName"
+      (keyup.Enter)="search()"
     />
   </div>
-  <button type="button">Search</button>
+  <button type="button" (click)="search()">Search</button>
 </div>
-
-<!-- [(ngModel)]="userName"
-      (keyup.Enter)="search()" -->
-
-<!-- (click)="search()" -->
