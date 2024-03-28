@@ -12,6 +12,8 @@ export class AppComponent {
   moonImg = '/assets/images/moon.svg';
   sunImg = '/assets/images/sun.svg';
 
+  errorMsg: boolean = false;
+
   switchTheme() {
     const bodyClasses = window.document.body.classList;
     this.isDarkMode = !this.isDarkMode;
