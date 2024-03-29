@@ -1,6 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
+interface UserProps {
+  avatar_url?: string;
+  name: string;
+  login?: string;
+  bio?: string;
+  company?: string;
+  public_repos?: number;
+  created_at?: string;
+  followers?: number;
+  twitter_username?: string;
+  following?: number;
+  location?: string;
+  blog?: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +30,21 @@ export class AppComponent implements OnInit {
   sunImg = '/assets/images/sun.svg';
 
   errorMsg: boolean = false;
+
+  userData: UserProps = {
+    avatar_url: '',
+    login: '',
+    name: '',
+    bio: '',
+    twitter_username: '',
+    company: '',
+    public_repos: 0,
+    created_at: '',
+    followers: 0,
+    following: 0,
+    location: '',
+    blog: '',
+  };
 
   constructor(private http: HttpClient) {}
 
