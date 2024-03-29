@@ -21,4 +21,16 @@
   </div>
 </div>
 
-<app-searchbar [message]="errorMsg" [isDarkMode]="isDarkMode"></app-searchbar>
+<app-searchbar
+  [message]="errorMsg"
+  [isDarkMode]="isDarkMode"
+  (searchEmmiter)="extractName($event)"
+></app-searchbar>
+
+<div [ngClass]="isDarkMode ? 'bg-dark' : 'bg-light'" class="form">
+  <img
+    [src]="userData.avatar_url"
+    style="width: 117px; height: 117px; border-radius: 50%"
+    alt=""
+  />
+</div>

@@ -48,7 +48,28 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.extractName(this.term);
+  }
+
+  extractName(searchWord: string) {
+    this.term = searchWord;
+
+    //API url using with searchword
+    const apiUrl: string = `https://api.github.com/users/${this.term}`;
+
+    // make api request
+    this.http.get<UserProps>(apiUrl).subscribe({
+      next: (res: UserProps) => {
+        this.userData = res;
+        this.errorMsg = false;
+      },
+      error: (error) => {
+        console.log(error);
+        this.errorMsg = true;
+      },
+    });
+  }
 
   switchTheme() {
     const bodyClasses = window.document.body.classList;
@@ -60,3 +81,14 @@ export class AppComponent implements OnInit {
     }
   }
 }
+
+/**
+ (res: UserProps) => {
+        this.userData = res;
+        this.errorMsg = false;
+      },
+      (error) => {
+        console.log(error);
+        this.errorMsg = true;
+      }
+ */
