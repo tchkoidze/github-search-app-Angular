@@ -92,7 +92,11 @@
         <img src="/assets/images/url.svg" alt="" />
         <a
           class="line-clamp-1"
-          [ngStyle]="{ color: isDarkMode ? '#FFFFFF' : '#4B6A9B' }"
+          [ngStyle]="{
+            color: isDarkMode ? '#FFFFFF' : '#4B6A9B',
+            'max-width': '146px',
+            'word-wrap': 'break-word'
+          }"
           href="https://medium.com/@mateyavelashvili"
           >{{ userData.blog }}</a
         >
