@@ -27,10 +27,81 @@
   (searchEmmiter)="extractName($event)"
 ></app-searchbar>
 
-<div [ngClass]="isDarkMode ? 'bg-dark' : 'bg-light'" class="form">
-  <img
-    [src]="userData.avatar_url"
-    style="width: 117px; height: 117px; border-radius: 50%"
-    alt=""
-  />
+<div
+  [ngClass]="isDarkMode ? 'bg-dark' : 'bg-light'"
+  *ngIf="userData"
+  class="form"
+>
+  <div>
+    <img
+      [src]="userData.avatar_url"
+      style="width: 117px; height: 117px; border-radius: 50%"
+      alt=""
+    />
+  </div>
+  <section>
+    <div
+      class="d-flex"
+      style="justify-content: space-between; align-items: center"
+    >
+      <p style="font-size: 26px; font-weight: 700">{{ userData.name }}</p>
+      <p class="joinedAt">
+        Joined {{ userData.created_at | date : "dd MMM yyyy" }}
+      </p>
+    </div>
+    <p class="login">@{{ userData.login }}</p>
+    <p style="margin-block: 20px 32px; font-weight: 400">{{ userData.bio }}</p>
+    <div
+      *ngIf="userData"
+      class="grid"
+      style="margin-block: 34px"
+      [ngStyle]="{ 'background-color': isDarkMode ? '#141D2F' : '#F6F8FF' }"
+    >
+      <p class="category">Repos</p>
+      <p class="category">Followers</p>
+      <p class="category">Following</p>
+      <h3 class="results">{{ userData.public_repos }}</h3>
+      <h3 class="results">{{ userData.following }}</h3>
+      <h3 class="results">{{ userData.followers }}</h3>
+    </div>
+    <div class="socials">
+      <div class="d-flex social">
+        <img src="/assets/images/pin.svg" alt="" />
+        <p>{{ userData.location }}</p>
+      </div>
+      <div class="d-flex social">
+        <img
+          [ngStyle]="{
+            filter: userData.twitter_username ? 'none' : 'grayscale(100%)'
+          }"
+          src="/assets/images/twitter.svg"
+          alt=""
+        />
+        <p
+          [ngStyle]="{ color: userData.twitter_username ? '#4B6A9B' : 'gray' }"
+        >
+          {{
+            userData.twitter_username
+              ? userData.twitter_username
+              : "Not Available"
+          }}
+        </p>
+      </div>
+
+      <div class="d-flex social">
+        <img src="/assets/images/url.svg" alt="" />
+        <a
+          class="line-clamp-1"
+          [ngStyle]="{ color: isDarkMode ? '#FFFFFF' : '#4B6A9B' }"
+          href="https://medium.com/@mateyavelashvili"
+          >{{ userData.blog }}</a
+        >
+      </div>
+
+      <div class="d-flex social">
+        <img src="/assets/images/office.svg" alt="" />
+        <p>{{ userData.company }}</p>
+      </div>
+    </div>
+  </section>
 </div>
