@@ -24,7 +24,7 @@ interface UserProps {
 export class AppComponent implements OnInit {
   title = 'github-search-app-Angular';
   isDarkMode: boolean = false;
-  term: string = 'matthewkk01';
+  term: string = 'tchkoidze';
 
   moonImg = '/assets/images/moon.svg';
   sunImg = '/assets/images/sun.svg';
