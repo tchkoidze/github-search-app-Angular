@@ -11,7 +11,10 @@ export class SearchbarComponent {
   @Input() isDarkMode: boolean = false;
   @Input() message: boolean = false;
 
-  search() {
+  /* search() {
     this.searchEmmiter.emit(this.userName);
+  }*/
+  search(value: string) {
+    this.searchEmmiter.emit(value);
   }
 }
