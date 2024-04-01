@@ -50,7 +50,16 @@
       </p>
     </div>
     <p class="login">@{{ userData.login }}</p>
-    <p style="margin-block: 20px 32px; font-weight: 400">{{ userData.bio }}</p>
+    <p
+      style="
+        margin-block: 20px 32px;
+        font-weight: 400;
+        max-width: 480px;
+        word-wrap: break-word;
+      "
+    >
+      {{ userData.bio }}
+    </p>
     <div
       *ngIf="userData"
       class="grid"
@@ -104,7 +113,9 @@
 
       <div class="d-flex social">
         <img src="/assets/images/office.svg" alt="" />
-        <p>{{ userData.company }}</p>
+        <p style="max-width: 146px; word-wrap: break-word">
+          {{ userData.company }}
+        </p>
       </div>
     </div>
   </section>
